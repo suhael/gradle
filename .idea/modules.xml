@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/gradle.iml" filepath="$PROJECT_DIR$/gradle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gradleService/gradleService.iml" filepath="$PROJECT_DIR$/gradleService/gradleService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gradleWebApp/gradleWebApp.iml" filepath="$PROJECT_DIR$/gradleWebApp/gradleWebApp.iml" />
     </modules>
   </component>
 </project>
