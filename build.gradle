@@ -1,112 +1,18 @@
 group 'com.suhael'
 version '1.0-SNAPSHOT'
 
+apply plugin: 'idea'
 apply plugin: 'war'
 apply plugin: 'jetty'
 
-sourceCompatibility = 1.5
+sourceCompatibility = 1.7
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    providedCompile 'javax.servlet:servlet-api:2.5'
+    runtime 'javax.servlet:jstl:1.1.2'
     testCompile group: 'junit', name: 'junit', version: '4.11'
-}
-
-
-version = new ProjectVersion(0, 1)
-
-class ProjectVersion {
-    Integer major
-    Integer minor
-    Boolean release
-    ProjectVersion(Integer major, Integer minor) {
-        this.major = major
-        this.minor = minor
-        this.release = Boolean.FALSE
-    }
-    ProjectVersion(Integer major, Integer minor, Boolean release) {
-        this(major, minor)
-        this.release = release
-    }
-    @Override
-    String toString() {
-        "$major.$minor${release ? '' : '-SNAPSHOT'}"
-    }
-}
-
-ext.versionFile = file('version.properties')
-task loadVersion {
-    project.version = readVersion()
-}
-ProjectVersion readVersion() {
-    logger.quiet 'Reading the version file.'
-    if(!versionFile.exists()) {
-        throw new GradleException("Required version file does not exist: " +
-                "$versionFile.canonicalPath")
-    }
-    Properties versionProps = new Properties()
-    versionFile.withInputStream { stream ->
-        versionProps.load(stream)
-    }
-    new ProjectVersion(versionProps.major.toInteger(),
-            versionProps.minor.toInteger(), versionProps.release.toBoolean())
-}
-
-
-
-jar {
-    manifest {
-        attributes 'Main-Class': 'com.manning.gia.todo.ToDoApp'
-    }
-}
-
-/*
-sourceSets {
-    main {
-        java {
-            srcDirs = ['src']
-        }
-    }
-    test {
-        java {
-            srcDirs = ['test']
-        }
-    }
-}
-buildDir = 'out'
-webAppDirName = 'webfiles'
-war {
-    from 'static'
-}
-*/
-jettyRun {
-    httpPort = 9090
-    contextPath = 'todo'
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '1.7'
-}
-
-task first << { println "first" }
-task second << { println "second" }
-first.finalizedBy second
-task printVersion(dependsOn: [second, first]) << {
-    logger.quiet "Version: $version"
-}
-task third << { println "third" }
-third.dependsOn('printVersion')
-
-task makeReleaseVersion(group: 'versioning', description: 'Makes project ' +
-        'a release version.') {
-    inputs.property('release', version.release)
-    outputs.file versionFile
-    doLast {
-        version.release = true
-        ant.propertyfile(file: versionFile) {
-            entry(key: 'release', type: 'string', operation: '=', value: 'true')
-        }
-    }
 }
