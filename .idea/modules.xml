@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/gradle.iml" filepath="$PROJECT_DIR$/gradle.iml" />
       <module fileurl="file://$PROJECT_DIR$/gradleService/gradleService.iml" filepath="$PROJECT_DIR$/gradleService/gradleService.iml" />
       <module fileurl="file://$PROJECT_DIR$/gradleWebApp/gradleWebApp.iml" filepath="$PROJECT_DIR$/gradleWebApp/gradleWebApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gradleWebAppTwo/gradleWebAppTwo.iml" filepath="$PROJECT_DIR$/gradleWebAppTwo/gradleWebAppTwo.iml" />
     </modules>
   </component>
 </project>

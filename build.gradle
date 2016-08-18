@@ -7,3 +7,10 @@ subprojects {
     apply plugin: 'idea'
     apply plugin: 'java'
 }
+
+task explodedDist(type: Copy) {
+    into "$buildDir/explodedDist"
+    subprojects {
+        from tasks.withType(War)
+    }
+}

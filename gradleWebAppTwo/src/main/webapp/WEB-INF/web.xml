@@ -4,14 +4,14 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
     <servlet>
-        <display-name>HelloWorldServlet</display-name>
-        <servlet-name>HelloWorldServlet</servlet-name>
+        <display-name>HelloWorldTwoServlet</display-name>
+        <servlet-name>HelloWorldTwoServlet</servlet-name>
         <servlet-class>com.suhael.gradle.HelloWorldServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>HelloWorldServlet</servlet-name>
-        <url-pattern>/hello</url-pattern>
+        <servlet-name>HelloWorldTwoServlet</servlet-name>
+        <url-pattern>/hello2</url-pattern>
     </servlet-mapping>
 
 </web-app>
